@@ -11,12 +11,12 @@ import (
 )
 
 type MessageData struct {
-	CMDID      int         `json:"cmdid"`
+	CMDID      int         `json:"cmdId"`
 	DeviceType int         `json:"deviceType"` //0 app 1 web
 	Data       interface{} `json:"data"`
 }
 type NotifyMessageData struct {
-	CMDID int         `json:"cmdid"`
+	CMDID int         `json:"cmdId"`
 	Data  interface{} `json:"data"`
 }
 

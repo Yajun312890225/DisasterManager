@@ -23,10 +23,10 @@ func InitRouter() *gin.Engine {
 		m.HandleRequest(c.Writer, c.Request)
 	})
 	m.HandleConnect(handler.Connect)
-
 	m.HandleDisconnect(handler.DisConnect)
-
 	m.HandleMessage(handler.Message)
+
+	r.POST("/register", handler.Register)
 
 	return r
 }
