@@ -37,6 +37,86 @@ info:
   contact: {}
   license: {}
 paths:
+  /billboard:
+    get:
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.Res'
+      summary: 获取宣传栏
+      tags:
+      - App
+  /checkDisaster:
+    get:
+      parameters:
+      - description: userId
+        in: query
+        name: userId
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.Res'
+      summary: 检查灾难是否发生
+      tags:
+      - App
+  /getDisasterTypeList:
+    get:
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.Res'
+      summary: 获取灾害类型
+      tags:
+      - App
+  /getRefuge:
+    get:
+      parameters:
+      - description: userId
+        in: query
+        name: userId
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.Res'
+      summary: 获取避难所信息
+      tags:
+      - App
+  /getRefugeFacility:
+    get:
+      parameters:
+      - description: userId
+        in: query
+        name: userId
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.Res'
+      summary: 获取避难设施信息
+      tags:
+      - App
+  /getkonwledge:
+    get:
+      parameters:
+      - description: disasterTypeId
+        in: query
+        name: disasterTypeId
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.Res'
+      summary: 根据灾害类型获取科普知识
+      tags:
+      - App
   /register:
     post:
       parameters:

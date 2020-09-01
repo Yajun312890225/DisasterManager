@@ -5,6 +5,134 @@
         "license": {}
     },
     "paths": {
+        "/billboard": {
+            "get": {
+                "tags": [
+                    "App"
+                ],
+                "summary": "获取宣传栏",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/response.Res"
+                        }
+                    }
+                }
+            }
+        },
+        "/checkDisaster": {
+            "get": {
+                "tags": [
+                    "App"
+                ],
+                "summary": "检查灾难是否发生",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "userId",
+                        "name": "userId",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/response.Res"
+                        }
+                    }
+                }
+            }
+        },
+        "/getDisasterTypeList": {
+            "get": {
+                "tags": [
+                    "App"
+                ],
+                "summary": "获取灾害类型",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/response.Res"
+                        }
+                    }
+                }
+            }
+        },
+        "/getRefuge": {
+            "get": {
+                "tags": [
+                    "App"
+                ],
+                "summary": "获取避难所信息",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "userId",
+                        "name": "userId",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/response.Res"
+                        }
+                    }
+                }
+            }
+        },
+        "/getRefugeFacility": {
+            "get": {
+                "tags": [
+                    "App"
+                ],
+                "summary": "获取避难设施信息",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "userId",
+                        "name": "userId",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/response.Res"
+                        }
+                    }
+                }
+            }
+        },
+        "/getkonwledge": {
+            "get": {
+                "tags": [
+                    "App"
+                ],
+                "summary": "根据灾害类型获取科普知识",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "disasterTypeId",
+                        "name": "disasterTypeId",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/response.Res"
+                        }
+                    }
+                }
+            }
+        },
         "/register": {
             "post": {
                 "tags": [

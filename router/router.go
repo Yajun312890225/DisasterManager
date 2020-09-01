@@ -27,6 +27,12 @@ func InitRouter() *gin.Engine {
 	m.HandleMessage(handler.Message)
 
 	r.POST("/register", handler.Register)
+	r.GET("/billboard", handler.BillBoard)
+	r.GET("/checkDisaster", handler.CheckDisaster)
+	r.GET("/getRefuge", handler.GetRefuge)
+	r.GET("/getRefugeFacility", handler.GetRefugeFacility)
+	r.GET("/getDisasterTypeList", handler.GetDisasterTypeList)
+	r.GET("/getkonwledge", handler.GetKonwledgeByDisasterType)
 
 	return r
 }

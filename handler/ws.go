@@ -1,6 +1,7 @@
 package handler
 
 import (
+	"DisasterManager/dao"
 	"DisasterManager/model"
 	"DisasterManager/pkg/ws"
 	"DisasterManager/utils"
@@ -59,9 +60,32 @@ func ConnHandle(data MessageData, s *melody.Session) {
 		}
 		s.Write(byteData)
 	case model.OnLocate:
-		byteData, err := json.Marshal(NotifyMessageData{CMDID: model.NotifyLocate, Data: data})
+		byteData, err := json.Marshal(NotifyMessageData{CMDID: model.NotifyLocate, Data: data.Data})
 		if err != nil {
 			log.Println(err)
+		}
+		d := data.Data.(map[string]interface{})
+		location := dao.Location()
+		userId, exist := d["userId"]
+		if exist {
+			location.UserId = int64(userId.(float64))
+		}
+		disa, exist := d["disasterId"]
+		if exist {
+			location.DisasterId = int(disa.(float64))
+		}
+		lo, exist := d["longitude"]
+		if exist {
+			location.Longitude = lo.(float64)
+		}
+		la, exist := d["latitude"]
+		if exist {
+			location.Latitude = la.(float64)
+		}
+		// fmt.Println(location)
+		if err := location.InsertLocation(); err != nil {
+			log.Println(err)
+			return
 		}
 		ws.GetSessionMaster().WriteToWeb(byteData)
 	}

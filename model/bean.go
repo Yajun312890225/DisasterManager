@@ -58,7 +58,7 @@ type Community struct {
 
 // Refuge 避难所
 type Refuge struct {
-	RefugeId    int     `gorm:"primary_key;AUTO_INCREMENT:false"  json:"refugeId"`
+	RefugeId    int     `gorm:"primary_key;AUTO_INCREMENT"  json:"refugeId"`
 	CommunityId int     `gorm:"primary_key;AUTO_INCREMENT:false"  json:"communityId"`
 	Longitude   float64 `json:"longitude"`
 	Latitude    float64 `json:"latitude"`
@@ -67,7 +67,7 @@ type Refuge struct {
 
 // RefugeFacility 避难设施
 type RefugeFacility struct {
-	RefugeFacilityId int     `gorm:"primary_key;AUTO_INCREMENT:false"  json:"refugeFacilityId"`
+	RefugeFacilityId int     `gorm:"primary_key;AUTO_INCREMENT"  json:"refugeFacilityId"`
 	CommunityId      int     `gorm:"primary_key;AUTO_INCREMENT:false"  json:"communityId"`
 	Longitude        float64 `json:"longitude"`
 	Latitude         float64 `json:"latitude"`
