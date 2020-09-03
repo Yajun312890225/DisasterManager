@@ -62,6 +62,31 @@ paths:
       summary: 检查灾难是否发生
       tags:
       - App
+  /getCommunities:
+    get:
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.Res'
+      summary: 获取社区
+      tags:
+      - Web
+  /getDisaster:
+    get:
+      parameters:
+      - description: communityId
+        in: query
+        name: communityId
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.Res'
+      summary: 获取社区受灾
+      tags:
+      - Web
   /getDisasterTypeList:
     get:
       responses:
@@ -72,6 +97,25 @@ paths:
       summary: 获取灾害类型
       tags:
       - App
+  /getHistoryDisasterDetail:
+    get:
+      parameters:
+      - description: communityId
+        in: query
+        name: communityId
+        type: string
+      - description: userId
+        in: query
+        name: userId
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.Res'
+      summary: 获取社区灾害历史位置信息
+      tags:
+      - Web
   /getRefuge:
     get:
       parameters:
@@ -102,6 +146,21 @@ paths:
       summary: 获取避难设施信息
       tags:
       - App
+  /getUser:
+    get:
+      parameters:
+      - description: userName
+        in: query
+        name: userName
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.Res'
+      summary: 获取用户
+      tags:
+      - Web
   /getkonwledge:
     get:
       parameters:

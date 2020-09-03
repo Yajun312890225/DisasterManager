@@ -78,6 +78,7 @@ type RefugeFacility struct {
 type Disaster struct {
 	DisasterId     int       `gorm:"primary_key;AUTO_INCREMENT"  json:"disasterId"`
 	DisasterTypeId int       `gorm:"type:int(11);" json:"disasterTypeId"`
+	Description    string    `gorm:"type:varchar(255)" json:"description"`
 	Status         string    `gorm:"type:int(1);DEFAULT:1;" json:"status" `
 	Level          int       `json:"level"`
 	BeginTime      time.Time `json:"beginTime"`

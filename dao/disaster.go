@@ -26,6 +26,14 @@ func (d *DisasterDao) GetDisasterByUser(userId int64) (disasterList []DisasterDa
 	}
 	return
 }
+func (d *DisasterDao) GetDisasterByCommunityId(communityId int) (disasterList []DisasterDao, err error) {
+	table := model.DB.Table("disaster").Select("disaster.*").Joins("left join disaster_community on disaster.disaster_id = disaster_community.disaster_id")
+	table = table.Where("disaster_community.community_id = ?", communityId)
+	if err = table.Find(&disasterList).Error; err != nil {
+		return nil, err
+	}
+	return
+}
 
 type DisasterTypeDao model.DisasterType
 

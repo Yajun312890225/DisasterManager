@@ -34,5 +34,10 @@ func InitRouter() *gin.Engine {
 	r.GET("/getDisasterTypeList", handler.GetDisasterTypeList)
 	r.GET("/getkonwledge", handler.GetKonwledgeByDisasterType)
 
+	r.GET("/getCommunities", handler.GetCommunities)
+	r.GET("/getDisaster", handler.GetDisaster)
+	r.GET("/getHistoryDisasterDetail", handler.GetHistoryDisasterDetail)
+	r.GET("/getUser", handler.GetUser)
+
 	return r
 }

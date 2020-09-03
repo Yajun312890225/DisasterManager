@@ -54,3 +54,14 @@ func (reg *ReqRegister) Register() response.Res {
 		Data: u,
 	}
 }
+
+func (u *UserDao) GetUser(userName string) (userList []UserDao, err error) {
+	table := model.DB.Table("user")
+	if userName != "" {
+		table = table.Where("username like ?", "%"+userName+"%")
+	}
+	if err = table.Find(&userList).Error; err != nil {
+		return nil, err
+	}
+	return
+}

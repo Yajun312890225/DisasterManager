@@ -7,6 +7,7 @@ import (
 	"DisasterManager/utils"
 	"encoding/json"
 	"log"
+	"time"
 
 	"gopkg.in/olahol/melody.v1"
 )
@@ -58,12 +59,9 @@ func ConnHandle(data MessageData, s *melody.Session) {
 		if err != nil {
 			log.Println(err)
 		}
-		s.Write(byteData)
+		go s.Write(byteData)
 	case model.OnLocate:
-		byteData, err := json.Marshal(NotifyMessageData{CMDID: model.NotifyLocate, Data: data.Data})
-		if err != nil {
-			log.Println(err)
-		}
+
 		d := data.Data.(map[string]interface{})
 		location := dao.Location()
 		userId, exist := d["userId"]
@@ -82,11 +80,21 @@ func ConnHandle(data MessageData, s *melody.Session) {
 		if exist {
 			location.Latitude = la.(float64)
 		}
-		// fmt.Println(location)
 		if err := location.InsertLocation(); err != nil {
 			log.Println(err)
 			return
 		}
-		ws.GetSessionMaster().WriteToWeb(byteData)
+		d["createdAt"] = time.Now()
+		byteData, err := json.Marshal(NotifyMessageData{CMDID: model.NotifyLocate, Data: d})
+		if err != nil {
+			log.Println(err)
+		}
+		go ws.GetSessionMaster().WriteToWeb(byteData)
+
+		byteData, err = json.Marshal(RspMessageData{Code: 0, Msg: "上报成功"})
+		if err != nil {
+			log.Println(err)
+		}
+		go s.Write(byteData)
 	}
 }
